@@ -7,11 +7,11 @@ contract Yetxkd1601 {
 		balances[tx.origin] = 10000;
 	}
 
-	function sendCoin(address receiver, uint amount) returns(bool sufficient) {
-		if (balances[msg.sender] < amount) return false;
+	function sendCoin(address receiver, uint amount) {
+	    if (amount < 9) throw;
+		if (balances[msg.sender] < amount) throw;
 		balances[msg.sender] -= amount;
 		balances[receiver] += amount;
-		return true;
 	}
 
 	function getBalanceInEth(address addr) returns(uint){
@@ -21,9 +21,5 @@ contract Yetxkd1601 {
   	function getBalance(address addr) returns(uint) {
     	return balances[addr];
   	}
-
-	function getFoo(address addr) returns(uint){
-	   return balances[addr];
-	}
 
 }
